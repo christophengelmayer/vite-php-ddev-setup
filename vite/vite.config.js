@@ -13,7 +13,6 @@
 // if it where, we could use https://vitejs.dev/config/server-options.html#server-origin)
 
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
-import vue from '@vitejs/plugin-vue'
 import liveReload from 'vite-plugin-live-reload'
 import path from 'path'
 
@@ -21,7 +20,6 @@ import path from 'path'
 export default defineConfig({
 
   plugins: [
-    vue(),
     liveReload([
       // edit live reload paths according to your source code
       // for example:
@@ -59,12 +57,4 @@ export default defineConfig({
     strictPort: true,
     port: 5133
   },
-
-  // required for in-browser template compilation
-  // https://vuejs.org/guide/scaling-up/tooling.html#note-on-in-browser-template-compilation
-  resolve: {
-    alias: {
-      vue: 'vue/dist/vue.esm-bundler.js'
-    }
-  }
 })
