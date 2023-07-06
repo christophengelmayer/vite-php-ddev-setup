@@ -1,7 +1,4 @@
 <?php
-// Helpers here serve as example. Change to suit your needs.
-const VITE_HOST = 'http://localhost:5133';
-
 // For a real-world example check here:
 // https://github.com/wp-bond/bond/blob/master/src/Tooling/Vite.php
 // https://github.com/wp-bond/boilerplate/tree/master/app/themes/boilerplate
@@ -34,7 +31,7 @@ function isDev(string $entry): bool
     if ($exists !== null) {
         return $exists;
     }
-    $handle = curl_init(VITE_HOST . '/' . $entry);
+    $handle = curl_init('http://localhost:5173' . '/' . $entry);
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($handle, CURLOPT_NOBODY, true);
 
@@ -51,7 +48,7 @@ function isDev(string $entry): bool
 function jsTag(string $entry): string
 {
     $url = isDev($entry)
-        ? VITE_HOST . '/' . $entry
+        ? 'https://'.getenv('DDEV_HOSTNAME').':5173'.'/' . $entry
         : assetUrl($entry);
 
     if (!$url) {
