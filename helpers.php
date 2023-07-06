@@ -27,6 +27,10 @@ function isDev(string $entry): bool
     // it will fallback to load the production files from manifest
     // so you still navigate your site as you intended!
 
+    if(getenv('IS_DDEV_PROJECT') !== true) {
+        return false;
+    }
+
     static $exists = null;
     if ($exists !== null) {
         return $exists;
