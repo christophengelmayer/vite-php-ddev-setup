@@ -7,7 +7,7 @@ require_once __DIR__ . '/helpers.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vite App</title>
-    <?= vite('main.js') ?>
+    <?= cssTag('main.js') ?>
 </head>
 
 <body>
@@ -15,6 +15,8 @@ require_once __DIR__ . '/helpers.php';
     <div>
         <?php echo 'Hello PHP'; ?>
     </div>
+
+    <?= jsTag('main.js') ?>
 </body>
 
 </html>

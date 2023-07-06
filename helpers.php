@@ -27,14 +27,16 @@ function isDev(string $entry): bool
     // it will fallback to load the production files from manifest
     // so you still navigate your site as you intended!
 
-    if(getenv('IS_DDEV_PROJECT') !== true) {
-        return false;
-    }
-
     static $exists = null;
     if ($exists !== null) {
         return $exists;
     }
+
+    // Check for ddev environment
+    if(getenv('IS_DDEV_PROJECT') != true) {
+        $exists = false;
+    }
+
     $handle = curl_init('http://localhost:5173' . '/' . $entry);
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($handle, CURLOPT_NOBODY, true);
@@ -99,8 +101,12 @@ function cssTag(string $entry): string
 
 function getManifest(): array
 {
-    $content = file_get_contents(__DIR__ . '/build/manifest.json');
-    return json_decode($content, true);
+    $filepath = __DIR__ . '/build/manifest.json';
+    if(file_exists($filepath)) {
+        $content = file_get_contents($filepath);
+        return json_decode($content, true);
+    }
+    return [];
 }
 
 function assetUrl(string $entry): string
