@@ -12,7 +12,7 @@ For everything else beyond the PHP side please refer to the [Vite documentation]
 
 ```
 ddev start
-ddev exec yarn install
+ddev yarn install
 ddev launch
 ```
 
@@ -20,11 +20,11 @@ ddev launch
 
 For development, start Vite dev server inside ddev:
 
-	ddev exec yarn dev
+	ddev yarn dev
 
 Build for production:
 
-	ddev exec yarn build
+	ddev yarn build
 
 The `helpers.php` script loads files from vite server and will fallback to production files from manifest if vite server is not running.
 
