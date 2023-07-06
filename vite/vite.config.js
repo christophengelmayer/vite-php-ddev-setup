@@ -23,7 +23,7 @@ export default defineConfig({
     liveReload([
       // edit live reload paths according to your source code
       // for example:
-      __dirname + '/(app|config|views)/**/*.php',
+      // __dirname + '/(app|config|views)/**/*.php',
       // using this for our example:
       __dirname + '/../public/*.php',
     ]),
@@ -34,11 +34,11 @@ export default defineConfig({
   root: 'src',
   base: process.env.APP_ENV === 'development'
     ? '/'
-    : '/dist/',
+    : '/build/',
 
   build: {
     // output dir for production build
-    outDir: '../../public/dist',
+    outDir: '../../build',
     emptyOutDir: true,
 
     // emit manifest so PHP can find the hashed files
