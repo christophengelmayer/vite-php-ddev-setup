@@ -98,7 +98,7 @@ function cssTag(string $entry): string
 
 function getManifest(): array
 {
-    $content = file_get_contents(__DIR__ . '/dist/manifest.json');
+    $content = file_get_contents(__DIR__ . '/build/manifest.json');
     return json_decode($content, true);
 }
 
@@ -107,7 +107,7 @@ function assetUrl(string $entry): string
     $manifest = getManifest();
 
     return isset($manifest[$entry])
-        ? '/dist/' . $manifest[$entry]['file']
+        ? '/build/' . $manifest[$entry]['file']
         : '';
 }
 
@@ -118,7 +118,7 @@ function importsUrls(string $entry): array
 
     if (!empty($manifest[$entry]['imports'])) {
         foreach ($manifest[$entry]['imports'] as $imports) {
-            $urls[] = '/dist/' . $manifest[$imports]['file'];
+            $urls[] = '/build/' . $manifest[$imports]['file'];
         }
     }
     return $urls;
@@ -131,7 +131,7 @@ function cssUrls(string $entry): array
 
     if (!empty($manifest[$entry]['css'])) {
         foreach ($manifest[$entry]['css'] as $file) {
-            $urls[] = '/dist/' . $file;
+            $urls[] = '/build/' . $file;
         }
     }
     return $urls;

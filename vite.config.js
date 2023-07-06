@@ -25,7 +25,7 @@ export default defineConfig({
       // for example:
       // __dirname + '/(app|config|views)/**/*.php',
       // using this for our example:
-      __dirname + '/../public/*.php',
+      __dirname + '/**/*.php',
     ]),
     splitVendorChunkPlugin(),
   ],
@@ -38,7 +38,7 @@ export default defineConfig({
 
   build: {
     // output dir for production build
-    outDir: '../../build',
+    outDir: '../build',
     emptyOutDir: true,
 
     // emit manifest so PHP can find the hashed files
